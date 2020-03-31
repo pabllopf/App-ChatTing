@@ -1,0 +1,26 @@
+
+Error: please Login or Sign Up first. at 2020-03-30 20:04:48
+You do not have permissions to access. Please login or Sign Up. at 2020-03-30 20:04:48
+You do not have permissions to access. Please login or Sign Up. at 2020-03-30 20:04:48
+You do not have permissions to access. Please login or Sign Up. at 2020-03-30 20:04:48
+You do not have permissions to access. Please login or Sign Up. at 2020-03-30 20:04:49
+Incorrect username or password. at 2020-03-30 20:05:10
+Unknown Command at 2020-03-30 20:56:33
+Error: please Login or Sign Up first. at 2020-03-31 10:44:40
+You do not have permissions to access. Please login or Sign Up. at 2020-03-31 10:44:40
+You do not have permissions to access. Please login or Sign Up. at 2020-03-31 10:44:41
+You do not have permissions to access. Please login or Sign Up. at 2020-03-31 10:44:41
+You do not have permissions to access. Please login or Sign Up. at 2020-03-31 10:44:41
+Error: please Login or Sign Up first. at 2020-03-31 11:32:24
+You do not have permissions to access. Please login or Sign Up. at 2020-03-31 11:32:25
+You do not have permissions to access. Please login or Sign Up. at 2020-03-31 11:32:25
+You do not have permissions to access. Please login or Sign Up. at 2020-03-31 11:32:25
+You do not have permissions to access. Please login or Sign Up. at 2020-03-31 11:32:26
+Incorrect user: enter only lowercase letters without spaces. at 2020-03-31 11:32:48
+Incorrect user: enter only lowercase letters without spaces. at 2020-03-31 11:33:00
+Unknown Command at 2020-03-31 11:34:56
+Error: please Login or Sign Up first. at 2020-03-31 11:35:33
+You do not have permissions to access. Please login or Sign Up. at 2020-03-31 11:35:33
+You do not have permissions to access. Please login or Sign Up. at 2020-03-31 11:35:33
+You do not have permissions to access. Please login or Sign Up. at 2020-03-31 11:35:33
+You do not have permissions to access. Please login or Sign Up. at 2020-03-31 11:35:33
