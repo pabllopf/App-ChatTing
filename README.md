@@ -1,5 +1,5 @@
-# App-ChatTing
 [`Version 0.01 Alpha`]()
+# App-ChatTing
 
 ## What is ChatTing?
 > Messaging web application made with sql and java databases.
