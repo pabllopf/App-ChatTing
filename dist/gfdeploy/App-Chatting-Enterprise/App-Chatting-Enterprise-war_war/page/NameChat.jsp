@@ -1,6 +1,6 @@
-<%@page import="es.ulpgc.as.pablopf.chatting.models.Error"%>
-<%@page import="es.ulpgc.as.pablopf.chatting.models.Chat"%>
-<%@page import="es.ulpgc.as.pablopf.chatting.models.User"%>
+<%@page import="models.Error"%>
+<%@page import="models.Chat"%>
+<%@page import="models.User"%>
 <% 
     if(request.getSession().getAttribute("currentAccount") == null){
         request.getSession().setAttribute("ErrorPage", new Error().saveError("You do not have permissions to access. Please login or Sign Up."));

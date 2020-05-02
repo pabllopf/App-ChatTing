@@ -1,4 +1,4 @@
-<%@page import="es.ulpgc.as.pablopf.chatting.models.Error"%>
+<%@page import="models.Error"%>
 <% 
     Error error = (Error) request.getSession().getAttribute("Error"); 
     if(error != null){

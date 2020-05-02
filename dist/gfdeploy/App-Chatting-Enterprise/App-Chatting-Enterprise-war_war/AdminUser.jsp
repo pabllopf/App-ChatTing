@@ -1,4 +1,4 @@
-<%@page import="es.ulpgc.as.pablopf.chatting.models.Error"%>
+<%@page import="models.Error"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <%
