@@ -5,12 +5,12 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import models.ConsoleColors;
 
-public class DatabaseConnHandler {
+public class Database {
     private String className = "com.mysql.cj.jdbc.Driver";
     private String url = "jdbc:mysql://localhost:3306/chat?autoReconnect=true&useSSL=false";
     private Connection connection;
 
-    public DatabaseConnHandler(){
+    public Database(){
         try{
             Class.forName(className);
             this.connection = DriverManager.getConnection(url, "root", "");
@@ -24,6 +24,6 @@ public class DatabaseConnHandler {
     }
     
     public Connection getConnection(){
-        return connection;
+        return new Database().connection;
     }
 }

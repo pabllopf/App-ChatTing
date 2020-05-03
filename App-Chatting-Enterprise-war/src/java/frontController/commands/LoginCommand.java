@@ -1,5 +1,5 @@
 package frontController.commands;
-import ejbs.CurrentUser;
+import ejbs.stateless.UserHandler;
 import models.Error;
 import models.User;
 
@@ -8,7 +8,7 @@ public class LoginCommand extends AbstractCommand{
     @Override
     public void process() {
         User account = new User(request.getParameter("userText"), request.getParameter("passwordText"));
-        if(new CurrentUser().login(account)){
+        if(new UserHandler().login(account)){
             request.getSession().setAttribute("currentAccount", account);
             forward("/RefreshChat.jsp");
         }else{

@@ -1,20 +1,21 @@
 package frontController.commands;
 
+import ejbs.stateless.UserHandler;
+import models.Error;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import models.User;
 
 public class SignUpCommand extends AbstractCommand{
     @Override
     public void process() {
-        /*UserHandler userModel = new UserHandler();
-
         String userParam = request.getParameter("userText");
         String passwordParam = request.getParameter("passwordText");
         String passwordRepeatParam = request.getParameter("passwordrepeatText");
         
         Pattern pattern = Pattern.compile("[A-Z\\s\\d\\W]+.*");
         Matcher matcher= pattern.matcher(userParam);
-
+        
         if(userParam.length() <= 0 || passwordParam.length() <= 0 || passwordRepeatParam.length() <= 0){
             request.getSession().setAttribute("Error", new Error().saveError("Empty user or password are not supported."));
             forward("/SignUp.jsp");
@@ -26,22 +27,22 @@ public class SignUpCommand extends AbstractCommand{
             forward("/SignUp.jsp"); 
             return;
         }
-
+        
         if(!passwordParam.equals(passwordRepeatParam)){
             request.getSession().setAttribute("Error", new Error().saveError("Introduce the same password."));
             forward("/SignUp.jsp");
             return;
         }
-
-        if(userModel.exists(userParam)){
+        
+        User newUser = new User(userParam, passwordParam);
+        
+        if(new UserHandler().exists(newUser)){
             request.getSession().setAttribute("Error", new Error().saveError("User already exists."));
             forward("/SignUp.jsp");
             return;
         }
         
-        userModel = new UserHandler();
-        User account = new User(userParam, passwordParam);
-        userModel.createUser(account);*/
+        new UserHandler().signUp(newUser);
         forward("/Login.jsp");
     }
 }

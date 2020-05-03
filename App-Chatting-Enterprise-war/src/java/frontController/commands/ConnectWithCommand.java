@@ -1,15 +1,15 @@
 package frontController.commands;
 
+import ejbs.stateless.ChatHandler;
+import models.Error;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import models.Chat;
 
 public class ConnectWithCommand  extends AbstractCommand{
 
     @Override
     public void process() {
-        /*ChatHandler chatModel = new ChatHandler();
-        MessageHandler messageModel = new MessageHandler();
-        
         String nameChatToConnect = request.getParameter("nameChatToConnect");
         
         Pattern pattern = Pattern.compile("[A-Z\\s\\d\\W]+.*");
@@ -27,17 +27,14 @@ public class ConnectWithCommand  extends AbstractCommand{
             return;
         }
         
-        if(!chatModel.exists(nameChatToConnect)){
-              request.getSession().setAttribute("Error", new Error().saveError("Incorrect name: a chat with this name dont exists."));
+        if(new ChatHandler().existsChat(nameChatToConnect) == false){
+              request.getSession().setAttribute("Error", new Error().saveError("Chat dont exists."));
               forward("/OpenChat.jsp");
               return;
         }
-        
-        Chat currentChat = new Chat();
-        currentChat.setName(nameChatToConnect);
-        //currentChat.setMessages(messageModel.getAllMessages(nameChatToConnect));
-        
-        request.getSession().setAttribute("currentChat", currentChat);*/
+
+        Chat currentChat = new ChatHandler().loadChat(nameChatToConnect);
+        request.getSession().setAttribute("currentChat", currentChat);
         forward("/RefreshChat.jsp");
     }
 }

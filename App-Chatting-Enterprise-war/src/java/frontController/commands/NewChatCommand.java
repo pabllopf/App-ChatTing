@@ -1,17 +1,15 @@
 package frontController.commands;
 
-import java.util.ArrayList;
+import ejbs.stateless.ChatHandler;
+import models.Error;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import models.Chat;
 
 public class NewChatCommand extends AbstractCommand{
     @Override
     public void process() {
-        /*ChatHandler chatModel = new ChatHandler();
-        
         String nameOfChat = request.getParameter("nameChat");
-        
-        Chat currentChat = new Chat(nameOfChat, new ArrayList<Message>());
         
         Pattern pattern = Pattern.compile("[A-Z\\s\\d\\W]+.*");
         Matcher matcher= pattern.matcher(nameOfChat);
@@ -28,14 +26,19 @@ public class NewChatCommand extends AbstractCommand{
             return;
         }
         
-        if(chatModel.exists(nameOfChat)){
+        if(new ChatHandler().existsChat(nameOfChat)){
               request.getSession().setAttribute("Error", new Error().saveError("Incorrect name: a chat with this name already exists."));
               forward("/CreateChat.jsp");
               return;
         }
         
-        request.getSession().setAttribute("currentChat", currentChat);
-        chatModel.createNewChat(nameOfChat);*/
-        forward("/RefreshChat.jsp");
+        if(new ChatHandler().createChat(nameOfChat)){
+            Chat currentChat = new ChatHandler().loadChat(nameOfChat);
+            request.getSession().setAttribute("currentChat", currentChat);
+            forward("/RefreshChat.jsp");
+        }else{
+            request.getSession().setAttribute("Error", new Error().saveError("Error To create the new chat."));
+            forward("/CreateChat.jsp");
+        }
     }    
 }

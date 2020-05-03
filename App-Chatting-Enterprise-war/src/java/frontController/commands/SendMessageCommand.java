@@ -1,6 +1,6 @@
 package frontController.commands;
 
-import ejbs.CurrentChat;
+import ejbs.stateless.ChatHandler;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import models.Chat;
@@ -26,7 +26,7 @@ public class SendMessageCommand extends AbstractCommand{
             forward("/Chat.jsp");
         }else{
             Message message = new Message(currentAccount.getUser(), messageContent, date);
-            new CurrentChat().sendMessage(currentChat.getName(), message);
+            new ChatHandler().sendMessageTo(currentChat.getName(), message);
             forward("/RefreshChat.jsp");
         }
     } 
