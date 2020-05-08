@@ -36,6 +36,10 @@
         <form method="post" action="LogChatApp.jsp">
            <input type="submit" value="Log Of Process">
         </form>
+        
+        <form method="post" action="StafulContainer.jsp">
+           <input type="submit" value="Staful Container Singlenton">
+        </form>
 
         <form method="post" action="FrontController">
            <input type="hidden" name="command" value="fbjjrCommand">

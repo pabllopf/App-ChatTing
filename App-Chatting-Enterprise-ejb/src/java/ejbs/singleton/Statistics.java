@@ -15,7 +15,7 @@ import models.LogMessage;
 
 @Singleton
 public class Statistics implements StatisticsRemote {
-    HashMap<String, Integer> map = new HashMap<>();
+    HashMap<String, Integer> map;
 
     @PostConstruct
     @Override

@@ -21,13 +21,9 @@ public class ConfirmDeleteCommand extends AbstractCommand{
         MessagePackRemote packToDelete = (MessagePackRemote)request.getSession().getAttribute("messagePack");
         
         if(packToDelete == null){
-            try {
-                packToDelete = (MessagePackRemote) InitialContext.doLookup("java:global/App-Chatting-Enterprise/App-Chatting-Enterprise-ejb/MessagePack");
-                request.getSession().setAttribute("messagePack", packToDelete);
-            } catch (NamingException ex) {
-                Logger.getLogger(MessageToDeleteCommand.class.getName()).log(Level.SEVERE, null, ex);
-            }   
+            request.getSession().setAttribute("messagePack", packToDelete);
         }
+        
         
         Chat currentChat = (Chat)request.getSession().getAttribute("currentChat");
         

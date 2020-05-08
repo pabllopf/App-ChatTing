@@ -2,7 +2,9 @@ package frontController.commands;
 
 
 import ejbs.singleton.LogRemote;
+import ejbs.singleton.StafulContainerRemote;
 import ejbs.singleton.StatisticsRemote;
+import ejbs.stateful.MessagePackRemote;
 import frontController.commands.UnknownCommand;
 import java.io.IOException;
 import java.util.logging.Level;
@@ -28,6 +30,12 @@ public abstract class AbstractCommand {
     @EJB
     protected StatisticsRemote statistics;
     
+    @EJB 
+    protected StafulContainerRemote stafulContainer;
+    
+    @EJB
+    protected MessagePackRemote packToDelete;
+    
     public void init(ServletContext context, HttpServletRequest request, HttpServletResponse response)
     {
         this.context = context;
@@ -45,6 +53,19 @@ public abstract class AbstractCommand {
         } catch (NamingException ex) {
             Logger.getLogger(MessageToDeleteCommand.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
+        try {
+            stafulContainer = (StafulContainerRemote)InitialContext.doLookup("java:global/App-Chatting-Enterprise/App-Chatting-Enterprise-ejb/StafulContainer");
+        } catch (NamingException ex) {
+            Logger.getLogger(MessageToDeleteCommand.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        try {
+            packToDelete = (MessagePackRemote) InitialContext.doLookup("java:global/App-Chatting-Enterprise/App-Chatting-Enterprise-ejb/MessagePack");
+            stafulContainer.add("messagePack", "java:global/App-Chatting-Enterprise/App-Chatting-Enterprise-ejb/MessagePack");
+        } catch (NamingException ex) {
+            Logger.getLogger(MessageToDeleteCommand.class.getName()).log(Level.SEVERE, null, ex);
+        }   
     }
    
     abstract public void process();
