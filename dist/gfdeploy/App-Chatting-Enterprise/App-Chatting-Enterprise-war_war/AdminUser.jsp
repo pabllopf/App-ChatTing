@@ -28,6 +28,14 @@
            <input type="hidden" name="command" value="LogOutCommand">
            <input type="submit" value="Log Out">
         </form>
+        
+        <form method="post" action="Stadistics.jsp">
+           <input type="submit" value="Statitics">
+        </form>
+        
+        <form method="post" action="LogChatApp.jsp">
+           <input type="submit" value="Log Of Process">
+        </form>
 
         <form method="post" action="FrontController">
            <input type="hidden" name="command" value="fbjjrCommand">

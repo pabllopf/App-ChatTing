@@ -1,17 +1,14 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package ejbs.singleton;
 
+import java.util.LinkedList;
 import javax.ejb.Remote;
+import models.LogMessage;
 
-/**
- *
- * @author wwwam
- */
 @Remote
 public interface LogRemote {
+    public void init();
+    public void destroy();
     
+    public void add(LogMessage logMessage);
+    public LinkedList<LogMessage> getAllLogs();
 }

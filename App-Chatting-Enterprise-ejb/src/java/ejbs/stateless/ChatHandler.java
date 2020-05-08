@@ -1,21 +1,28 @@
 package ejbs.stateless;
 
 import database.Database;
+import ejbs.singleton.LogRemote;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
+import javax.ejb.EJB;
 import javax.ejb.Stateless;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
 import models.Chat;
 import models.ConsoleColors;
+import models.LogMessage;
 import models.Message;
 
 @Stateless
 public class ChatHandler implements ChatHandlerRemote {
-    
+
     @PostConstruct
     @Override
     public void init(){
@@ -54,6 +61,7 @@ public class ChatHandler implements ChatHandlerRemote {
     public Chat loadChat(String nameChat){
         System.out.println("ChatHandler::loadChat::'" + nameChat + "' - @Override Stateless");
         
+        
         String sql = "SELECT id, name, message, DATE_FORMAT(created_at, 'at %h:%i:%s %p') as date FROM " + nameChat + " ORDER BY created_at DESC LIMIT 100";
         ArrayList<Message> messages = new ArrayList<Message>();
         
@@ -72,6 +80,7 @@ public class ChatHandler implements ChatHandlerRemote {
     public boolean sendMessageTo(String nameChat, Message message){
         System.out.println("ChatHandler::sendMessageTo::'" + nameChat + "' by "+ message.getUser() + " content " + message.getContent() + " at " + message.getCreated_at() + " - @Override Stateless");
         String sql = "INSERT INTO " + nameChat + " (name, message, created_at) VALUES(?,?,?)";
+        
         
         try(PreparedStatement pst = new Database().getConnection().prepareStatement(sql)){
             pst.setString(1, message.getUser());
@@ -118,6 +127,7 @@ public class ChatHandler implements ChatHandlerRemote {
     @PreDestroy
     @Override
     public void destroy() {
+        
         System.out.println("ChatHandler::destroy - @PreDestroy Stateless");
     }
 }

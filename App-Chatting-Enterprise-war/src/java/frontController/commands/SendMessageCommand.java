@@ -6,12 +6,15 @@ import java.time.format.DateTimeFormatter;
 import models.Chat;
 import models.User;
 import models.Error;
+import models.LogMessage;
 import models.Message;
 
 public class SendMessageCommand extends AbstractCommand{
 
     @Override
     public void process() { 
+        logRemote.add(new LogMessage("SendMessageCommand::process"));
+        
         Chat currentChat = (Chat) request.getSession().getAttribute("currentChat");
         User currentAccount = (User) request.getSession().getAttribute("currentAccount");
         
@@ -27,6 +30,7 @@ public class SendMessageCommand extends AbstractCommand{
         }else{
             Message message = new Message(currentAccount.getUser(), messageContent, date);
             new ChatHandler().sendMessageTo(currentChat.getName(), message);
+            logRemote.add(new LogMessage("SendMessageCommand::SendMessage::" + message.getContent() + ":in chat:" + currentChat.getName() + ":By:" + currentAccount.getUser()));
             forward("/RefreshChat.jsp");
         }
     } 

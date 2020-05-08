@@ -1,6 +1,9 @@
 package ejbs.stateful;
 
+import ejbs.singleton.LogRemote;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import javax.ejb.EJB;
@@ -8,6 +11,9 @@ import javax.ejb.PostActivate;
 import javax.ejb.PrePassivate;
 import javax.ejb.Remove;
 import javax.ejb.Stateful;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
+import models.LogMessage;
 import models.Message;
 
 @Stateful
@@ -19,6 +25,8 @@ public class MessagePack implements MessagePackRemote {
     public void init() {
         System.out.println("MessagePack::init - @PostConstruct Stateful");
         messages = new ArrayList<>();
+        
+   
     }
 
     @PrePassivate

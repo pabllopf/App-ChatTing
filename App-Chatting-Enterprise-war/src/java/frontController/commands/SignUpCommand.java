@@ -1,14 +1,23 @@
 package frontController.commands;
 
+import ejbs.singleton.StatisticsRemote;
 import ejbs.stateless.UserHandler;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import models.Error;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import javax.ejb.EJB;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
+import models.LogMessage;
 import models.User;
 
 public class SignUpCommand extends AbstractCommand{
     @Override
     public void process() {
+        logRemote.add(new LogMessage("SignUpCommand::process"));
+        
         String userParam = request.getParameter("userText");
         String passwordParam = request.getParameter("passwordText");
         String passwordRepeatParam = request.getParameter("passwordrepeatText");
@@ -42,7 +51,10 @@ public class SignUpCommand extends AbstractCommand{
             return;
         }
         
+        logRemote.add(new LogMessage("SignUp::" + newUser.getUser()));
+        
         new UserHandler().signUp(newUser);
+        statistics.countNewsSingUp();
         forward("/Login.jsp");
     }
 }

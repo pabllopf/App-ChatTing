@@ -1,5 +1,6 @@
 package frontController.commands;
 
+import ejbs.singleton.LogRemote;
 import ejbs.stateful.MessagePackRemote;
 import ejbs.stateless.ChatHandler;
 import java.util.logging.Level;
@@ -9,12 +10,14 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import models.Chat;
+import models.LogMessage;
 import models.Message;
 
 public class ConfirmDeleteCommand extends AbstractCommand{
-
     @Override
     public void process() {
+        logRemote.add(new LogMessage("ConfirmDeleteCommand::process"));
+        
         MessagePackRemote packToDelete = (MessagePackRemote)request.getSession().getAttribute("messagePack");
         
         if(packToDelete == null){
@@ -34,6 +37,8 @@ public class ConfirmDeleteCommand extends AbstractCommand{
             }
             request.getSession().setAttribute("messagePack", null);
         }
+        
+        
         
         forward("/RefreshChat.jsp");
     }
