@@ -10,7 +10,6 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import models.Chat;
 import models.Message;
-import models.User;
 
 public class ConfirmDeleteCommand extends AbstractCommand{
 
@@ -33,19 +32,9 @@ public class ConfirmDeleteCommand extends AbstractCommand{
             for(Message mess : packToDelete.getMessages()){
                 new ChatHandler().deleteMessage(mess, currentChat);
             }
+            request.getSession().setAttribute("messagePack", null);
         }
-        
         
         forward("/RefreshChat.jsp");
-    }
-
-    private ChatHandler lookupChatHandlerBean() {
-        try {
-            Context c = new InitialContext();
-            return (ChatHandler) c.lookup("java:global/App-Chatting-Enterprise/App-Chatting-Enterprise-war/ChatHandler!ejbs.stateless.ChatHandler");
-        } catch (NamingException ne) {
-            Logger.getLogger(getClass().getName()).log(Level.SEVERE, "exception caught", ne);
-            throw new RuntimeException(ne);
-        }
     }
 }

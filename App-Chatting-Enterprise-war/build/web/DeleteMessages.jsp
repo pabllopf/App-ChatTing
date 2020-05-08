@@ -29,7 +29,12 @@
                     
                     <form method="post" action="FrontController">
                         <input type="hidden" name="command" value="ConfirmDeleteCommand">
-                        <input type="submit" value="Confirm To Delete All" name="confirm">
+                        <input style="background-color: red;" type="submit" value="Confirm To Delete All" name="confirm">
+                    </form>
+                    
+                     <form method="post" action="FrontController">
+                        <input type="hidden" name="command" value="CancelDeleteCommand">
+                        <input type="submit" value="Cancel & Clean List" name="cancel">
                     </form>
                     
                     <jsp:include page="page/PrintMessagesToDelete.jsp"/>

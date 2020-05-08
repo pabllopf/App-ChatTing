@@ -19,7 +19,7 @@
                     out.println("<p class = \"textDateCool\">"+message.getCreated_at()+ "</p>");
                     out.println("<input type=\"hidden\" name=\"command\" value=\"MessageToDeleteCommand\">");
                     out.println("<input type=\"hidden\" name=\"mess\" value=" + message.getId() + ">");
-                    out.println("<input type=\"submit\" value=\"Delete\">");
+                    out.println("<input style=\"background-color: red;\" type=\"submit\" value=\"Delete\">");
                     out.println("</form><br>");
                 }else{
                     out.println("<form class =\"borderCool themessages\">");

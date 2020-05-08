@@ -30,9 +30,9 @@
                     
                      <%
                         MessagePackRemote messagePack = (MessagePackRemote) request.getSession().getAttribute("messagePack");
-                            if(messagePack != null){     
+                        if(messagePack != null){     
                             out.println("<form method=\"post\" action=\"DeleteMessages.jsp\">");  
-                            out.println("<input type=\"submit\" value=\"See Messages To Delete\" name=\"see\">");
+                            out.println("<input style=\"background-color: red;\" type=\"submit\" value=\"See Messages To Delete\" name=\"see\">");
                             out.println("</form>");
                         }  
                     %> 

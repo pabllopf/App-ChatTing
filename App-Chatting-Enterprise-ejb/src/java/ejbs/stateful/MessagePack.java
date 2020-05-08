@@ -3,6 +3,7 @@ package ejbs.stateful;
 import java.util.ArrayList;
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
+import javax.ejb.EJB;
 import javax.ejb.PostActivate;
 import javax.ejb.PrePassivate;
 import javax.ejb.Remove;
@@ -60,17 +61,11 @@ public class MessagePack implements MessagePackRemote {
     
     @Remove
     @Override
-    public void remove(Message message) {
-        System.out.println("MessagePack::remove - @Remove Stateful");
-        messages.remove(message);
+    public void cleanAll() {
+        System.out.println("MessagePack::remove::cleanAll - @Remove Stateful");
+        messages.clear();
     }
     
-    @Override
-    public void confirm(Message message){
-        System.out.println("MessagePack::confirm - @Override Stateful");
-        //deletemessages od database
-    }
-
     @PreDestroy
     @Override
     public void destroy() {

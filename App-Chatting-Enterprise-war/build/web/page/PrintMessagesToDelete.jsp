@@ -6,7 +6,6 @@
 <%@page import="models.Chat"%>
 <% 
     MessagePackRemote messagePack = (MessagePackRemote) request.getSession().getAttribute("messagePack");
-    ArrayList<Message> messagesTemp = new ArrayList();
     if(messagePack != null){
         for(Message message : messagePack.getMessages()){
             out.println("<form class =\"borderCool mymessage\">");
