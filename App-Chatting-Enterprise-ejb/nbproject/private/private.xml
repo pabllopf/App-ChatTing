@@ -3,10 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/wwwam/Documents/Repositorios/App-ChatTing/App-Chatting-Enterprise-ejb/src/java/ejbs/CurrentChat.java</file>
-            <file>file:/C:/Users/wwwam/Documents/Repositorios/App-ChatTing/App-Chatting-Enterprise-ejb/src/java/database/MessageHandler.java</file>
-            <file>file:/C:/Users/wwwam/Documents/Repositorios/App-ChatTing/App-Chatting-Enterprise-ejb/src/java/database/ChatHandler.java</file>
-            <file>file:/C:/Users/wwwam/Documents/Repositorios/App-ChatTing/App-Chatting-Enterprise-ejb/src/java/ejbs/CurrentUser.java</file>
+            <file>file:/C:/Users/wwwam/Documents/Repositorios/App-ChatTing/App-Chatting-Enterprise-ejb/src/java/ejbs/stateless/ChatHandler.java</file>
+            <file>file:/C:/Users/wwwam/Documents/Repositorios/App-ChatTing/App-Chatting-Enterprise-ejb/src/java/ejbs/stateful/MessagePack.java</file>
+            <file>file:/C:/Users/wwwam/Documents/Repositorios/App-ChatTing/App-Chatting-Enterprise-ejb/src/java/database/Database.java</file>
+            <file>file:/C:/Users/wwwam/Documents/Repositorios/App-ChatTing/App-Chatting-Enterprise-ejb/src/java/ejbs/stateless/UserHandler.java</file>
+            <file>file:/C:/Users/wwwam/Documents/Repositorios/App-ChatTing/App-Chatting-Enterprise-ejb/src/java/ejbs/singleton/Statistics.java</file>
+            <file>file:/C:/Users/wwwam/Documents/Repositorios/App-ChatTing/App-Chatting-Enterprise-ejb/src/java/ejbs/singleton/Log.java</file>
         </group>
     </open-files>
 </project-private>

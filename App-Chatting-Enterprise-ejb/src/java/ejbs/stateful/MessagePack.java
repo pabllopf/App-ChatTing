@@ -17,7 +17,7 @@ public class MessagePack implements MessagePackRemote {
     @Override
     public void init() {
         System.out.println("MessagePack::init - @PostConstruct Stateful");
-        messages = new ArrayList<Message>();
+        messages = new ArrayList<>();
     }
 
     @PrePassivate
@@ -35,7 +35,27 @@ public class MessagePack implements MessagePackRemote {
     @Override
     public void add(Message message) {
         System.out.println("MessagePack::add - @Override Stateful");
+        
+        for(Message mes: messages){
+            if(mes.getId().equals(message.getId())){
+                return;
+            }
+        }
+        
         messages.add(message);
+        
+    }
+    
+    @Override
+    public boolean containt(Message message) {
+        System.out.println("MessagePack::containt::message:: "+ message.getContent() +" - @Override Stateful");
+        return messages.contains(message);
+    }
+    
+    @Override
+    public ArrayList<Message> getMessages() {
+        System.out.println("MessagePack::getMessages - @Override Stateful");
+        return messages;
     }
     
     @Remove

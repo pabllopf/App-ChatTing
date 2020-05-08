@@ -1,5 +1,6 @@
 package ejbs.stateful;
 
+import java.util.ArrayList;
 import javax.ejb.Remote;
 import models.Message;
 
@@ -9,6 +10,8 @@ public interface MessagePackRemote {
     public void passivate();
     public void active();
     public void add(Message message);
+    public boolean containt(Message message);
+    public ArrayList<Message> getMessages();
     public void remove(Message message);
     public void confirm(Message message);
     public void destroy();

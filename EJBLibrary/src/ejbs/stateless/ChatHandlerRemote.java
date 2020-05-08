@@ -10,6 +10,8 @@ public interface ChatHandlerRemote {
     public boolean existsChat(String nameChat);
     public boolean createChat(String nameChat);
     public Chat loadChat(String nameChat);
+    public boolean exitsMessage(Message message, Chat chat);
+    public boolean deleteMessage(Message message, Chat chat);
     public boolean sendMessageTo(String nameChat, Message message);
     public void destroy();
 }

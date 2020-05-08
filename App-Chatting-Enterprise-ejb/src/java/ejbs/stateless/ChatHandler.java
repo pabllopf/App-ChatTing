@@ -59,7 +59,7 @@ public class ChatHandler implements ChatHandlerRemote {
         
         try(PreparedStatement pst = new Database().getConnection().prepareStatement(sql); ResultSet rs = pst.executeQuery()){
             while(rs.next()){
-                messages.add(new Message(rs.getString("name"), rs.getString("message"), rs.getString("date")));
+                messages.add(new Message(rs.getString("id"), rs.getString("name"), rs.getString("message"), rs.getString("date")));
             }
         }catch(SQLException e){
              System.out.println(ConsoleColors.RED + e.getMessage());
@@ -77,6 +77,36 @@ public class ChatHandler implements ChatHandlerRemote {
             pst.setString(1, message.getUser());
             pst.setString(2, message.getContent());
             pst.setString(3, message.getCreated_at());
+            return pst.executeUpdate() == 1;
+        }catch(SQLException e){
+             System.out.println(ConsoleColors.RED + e.getMessage());
+        }
+        
+        return false;
+    }
+    
+    @Override
+    public boolean exitsMessage(Message message, Chat chat){
+         System.out.println("ChatHandler::exitsMessage::'" + chat.getName() + "' - @Override Stateless");
+         
+         Chat chatDatabase = loadChat(chat.getName());
+         
+         for(Message i : chatDatabase.getMessages()){
+             if(i == message){
+                 return true;
+             }
+         }
+        return false;
+    }
+    
+    @Override
+    public boolean deleteMessage(Message message, Chat chat){
+        System.out.println("ChatHandler::deleteMessage::message:: '" + message.getContent() + "' - @Override Stateless");
+        
+        String sql = "DELETE FROM " + chat.getName() + " WHERE id = ?";
+        
+        try(PreparedStatement pst = new Database().getConnection().prepareStatement(sql)){
+            pst.setString(1, message.getId());
             return pst.executeUpdate() == 1;
         }catch(SQLException e){
              System.out.println(ConsoleColors.RED + e.getMessage());

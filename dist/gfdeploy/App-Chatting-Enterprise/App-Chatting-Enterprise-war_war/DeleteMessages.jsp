@@ -28,15 +28,11 @@
                     <jsp:include page="page/NameChat.jsp"/>
                     
                     <form method="post" action="FrontController">
-                        <input type="hidden" name="command" value="SendMessageCommand">
-                        <input type="submit" value="SendMessage" name="send">
-                        
-                        <jsp:include page="debug/CheckError.jsp"/>
-
-                        <input type="text" value="" name="sendMessage">
+                        <input type="hidden" name="command" value="ConfirmDeleteCommand">
+                        <input type="submit" value="Confirm To Delete All" name="confirm">
                     </form>
-
-                    <jsp:include page="page/PrintMessages.jsp"/>
+                    
+                    <jsp:include page="page/PrintMessagesToDelete.jsp"/>
                 </div>
             </main>
         </div>

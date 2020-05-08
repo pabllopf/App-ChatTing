@@ -305,6 +305,10 @@ img {
     margin: 0;
 }
 
+.buttonCool{
+    color: red;
+}
+
 
 input[type=text], select {
   width: 100%;

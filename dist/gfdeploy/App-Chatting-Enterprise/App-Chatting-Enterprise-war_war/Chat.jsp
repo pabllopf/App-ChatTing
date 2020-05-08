@@ -1,3 +1,4 @@
+<%@page import="ejbs.stateful.MessagePackRemote"%>
 <%@page import="models.Error"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
@@ -27,14 +28,24 @@
                 <div>
                     <jsp:include page="page/NameChat.jsp"/>
                     
+                     <%
+                        MessagePackRemote messagePack = (MessagePackRemote) request.getSession().getAttribute("messagePack");
+                            if(messagePack != null){     
+                            out.println("<form method=\"post\" action=\"DeleteMessages.jsp\">");  
+                            out.println("<input type=\"submit\" value=\"See Messages To Delete\" name=\"see\">");
+                            out.println("</form>");
+                        }  
+                    %> 
+                    
                     <form method="post" action="FrontController">
                         <input type="hidden" name="command" value="SendMessageCommand">
-                        <input type="submit" value="SendMessage" name="send">
+                        <input type="submit" value="Send Message" name="send">
                         
                         <jsp:include page="debug/CheckError.jsp"/>
 
                         <input type="text" value="" name="sendMessage">
                     </form>
+                  
 
                     <jsp:include page="page/PrintMessages.jsp"/>
                 </div>
