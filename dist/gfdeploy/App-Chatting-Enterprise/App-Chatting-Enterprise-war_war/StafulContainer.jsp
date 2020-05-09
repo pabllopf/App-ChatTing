@@ -56,7 +56,7 @@
                                 out.println("<h4>Content: </h4>");
                                 
                                 for(Message message : messagePack.getMessages()){
-                                    out.println("<h5>Message Selected To Delete: "+ message.getContent() + " by " + message.getUser() + " sended at " + message.getCreated_at() + "</h5>");
+                                    out.println("<h5>Message Selected To Delete: '"+ message.getContent() + "' by " + message.getUser() + " sended at " + message.getCreated_at() + "</h5>");
                                 }
                             }
                             
