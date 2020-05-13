@@ -7,6 +7,8 @@
             <file>file:/C:/Users/wwwam/Documents/Repositorios/App-ChatTing/App-Chatting-Enterprise-ejb/src/java/ejbs/stateless/ChatHandler.java</file>
             <file>file:/C:/Users/wwwam/Documents/Repositorios/App-ChatTing/App-Chatting-Enterprise-ejb/src/java/ejbs/stateful/MessagePack.java</file>
             <file>file:/C:/Users/wwwam/Documents/Repositorios/App-ChatTing/App-Chatting-Enterprise-ejb/src/java/ejbs/stateful/ChatPack.java</file>
+            <file>file:/C:/Users/wwwam/Documents/Repositorios/App-ChatTing/App-Chatting-Enterprise-ejb/src/java/database/Database.java</file>
+            <file>file:/C:/Users/wwwam/Documents/Repositorios/App-ChatTing/App-Chatting-Enterprise-ejb/src/java/ejbs/stateless/UserHandler.java</file>
             <file>file:/C:/Users/wwwam/Documents/Repositorios/App-ChatTing/App-Chatting-Enterprise-ejb/src/java/ejbs/singleton/Statistics.java</file>
             <file>file:/C:/Users/wwwam/Documents/Repositorios/App-ChatTing/App-Chatting-Enterprise-ejb/src/java/ejbs/singleton/Log.java</file>
         </group>
