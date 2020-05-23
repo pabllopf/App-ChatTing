@@ -1,10 +1,15 @@
 package ejbs.stateless.controllers;
 
+import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
 import models.User;
 import tables.TableUsers;
 
@@ -29,7 +34,18 @@ public class TableUsersFacade extends AbstractFacade<TableUsers> {
     }
     
     public boolean login(User account){
-        return this.findAll().stream().anyMatch((user) -> (user.getName().equals(account.getUser()) && user.getPassword().equals(account.getPassword())));
+        CriteriaBuilder cb = em.getCriteriaBuilder();
+        CriteriaQuery<TableUsers> cq = cb.createQuery(TableUsers.class);
+        Root<TableUsers> user = cq.from(TableUsers.class);
+        cq.select(user)
+        .distinct(true)
+        .orderBy(cb.asc(user.get("name")))
+        .where(cb.like(user.get("name"), account.getUser()));
+                
+        TypedQuery<TableUsers> q = em.createQuery(cq);
+        List<TableUsers> finaluser = q.getResultList();
+        
+        return finaluser.stream().anyMatch((i) -> (i.getName().equals(account.getUser()) && i.getPassword().equals(account.getPassword())));
     }
     
     public boolean signUp(User account){
@@ -38,7 +54,10 @@ public class TableUsersFacade extends AbstractFacade<TableUsers> {
     }
     
     public boolean exists(User account){
-        return this.findAll().stream().anyMatch((user) -> (user.getName().equals(account.getUser()) && user.getPassword().equals(account.getPassword())));
+        List<TableUsers> results = em.createQuery("SELECT c FROM TableUsers C WHERE c.name LIKE :custname")
+                                        .setParameter("custname", account.getUser()).getResultList();
+        System.out.println("TableUsersFacade::exists:: "+ results.size() +" - @PostConstruct Stateless");
+        return !(results.isEmpty());
     }
     
     public void changePassword(User account){

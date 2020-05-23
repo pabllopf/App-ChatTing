@@ -5,11 +5,13 @@
  */
 package ejbs.stateless.controllers;
 
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import models.LogMessage;
 import tables.TableLog;
+import tables.TableUsers;
 
 /**
  *
@@ -34,6 +36,10 @@ public class TableLogFacade extends AbstractFacade<TableLog> {
         for(TableLog log: this.findAll()){
             this.remove(log);
         }
+    }
+    
+    public List<TableLog> findAllOrderById(){
+        return em.createQuery("SELECT c FROM TableLog c ORDER BY c.id DESC").getResultList();
     }
 
     public TableLogFacade() {

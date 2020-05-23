@@ -54,7 +54,7 @@
                     <%
                         TableLogFacade logTable = (TableLogFacade)InitialContext.doLookup("java:global/Final-App-Chatting/Final-App-Chatting-ejb/TableLogFacade!ejbs.stateless.controllers.TableLogFacade");
                         if(logTable != null){
-                            for(TableLog log : logTable.findAll()){
+                            for(TableLog log : logTable.findAllOrderById()){
                                 out.println("<h3>" + log.getLogmessage() + "</h3>");
                             }
                         }else{
