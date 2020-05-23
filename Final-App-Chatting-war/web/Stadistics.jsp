@@ -33,7 +33,7 @@
                     </form>
                     <h1>Statistics</h1>
                     <%
-                        StatisticsRemote statistics = (StatisticsRemote) InitialContext.doLookup("java:global/App-Chatting-Enterprise/App-Chatting-Enterprise-ejb/Statistics");
+                        StatisticsRemote statistics = (StatisticsRemote) InitialContext.doLookup("java:global/Final-App-Chatting/Final-App-Chatting-ejb/Statistics");
                         out.println("<h3>Number of users logged: " + statistics.getCounterOfLoggings() + "</h3>");
                         out.println("<h3>Number of registered users: " + statistics.getCounterOfSingUp()+ "</h3>");
                     %>

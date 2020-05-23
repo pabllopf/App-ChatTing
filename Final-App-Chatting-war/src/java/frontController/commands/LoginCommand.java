@@ -1,4 +1,7 @@
 package frontController.commands;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import models.Error;
 import models.LogMessage;
 import models.User;
@@ -7,7 +10,7 @@ public class LoginCommand extends AbstractCommand{
     @Override
     public void process() {
         logRemote.add(new LogMessage("LoginCommand::process"));
-        
+                
         User account = new User(request.getParameter("userText"), request.getParameter("passwordText"));
         
         if(userHandler.login(account)){

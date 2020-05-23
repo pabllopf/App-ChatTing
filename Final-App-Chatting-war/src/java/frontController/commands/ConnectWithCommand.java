@@ -55,9 +55,9 @@ public class ConnectWithCommand  extends AbstractCommand{
         
         if(chatPack == null){
             try {
-                chatPack = (ChatPackRemote) InitialContext.doLookup("java:global/App-Chatting-Enterprise/App-Chatting-Enterprise-ejb/ChatPack");
+                chatPack = (ChatPackRemote) InitialContext.doLookup("java:global/Final-App-Chatting/Final-App-Chatting-ejb/ChatPack!ejbs.stateful.ChatPackRemote");
                 request.getSession().setAttribute("chatPackRemote", chatPack);
-                stafulContainer.add("chatPackRemote", "java:global/App-Chatting-Enterprise/App-Chatting-Enterprise-ejb/ChatPack");
+                stafulContainer.add("chatPackRemote", "java:global/Final-App-Chatting/Final-App-Chatting-ejb/ChatPack!ejbs.stateful.ChatPackRemote");
             } catch (NamingException ex) {
                 Logger.getLogger(MessageToDeleteCommand.class.getName()).log(Level.SEVERE, null, ex);
             }   

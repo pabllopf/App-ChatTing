@@ -8,6 +8,7 @@ package ejbs.stateless.controllers;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import models.LogMessage;
 import tables.TableLog;
 
 /**
@@ -23,6 +24,16 @@ public class TableLogFacade extends AbstractFacade<TableLog> {
     @Override
     protected EntityManager getEntityManager() {
         return em;
+    }
+    
+    public void saveLog(LogMessage log){
+        this.create(new TableLog(this.count() + 1, "Support messages Saved in database: " + log.getContent()));
+    }
+    
+    public void cleanLog(){
+        for(TableLog log: this.findAll()){
+            this.remove(log);
+        }
     }
 
     public TableLogFacade() {

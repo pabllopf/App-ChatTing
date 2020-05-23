@@ -33,6 +33,14 @@
            <input type="submit" value="Statitics">
         </form>
         
+        <form method="post" action="Support.jsp">
+           <input type="submit" value="Support">
+        </form>
+        
+        <form method="post" action="ChangePassword.jsp">
+           <input type="submit" value="Change My Password">
+        </form>
+        
         <form method="post" action="LogChatApp.jsp">
            <input type="submit" value="Log Of Process">
         </form>
@@ -43,6 +51,11 @@
         
         <form method="post" action="LogTime.jsp">
            <input type="submit" value="Config Log Time">
+        </form>
+        
+        <form method="post" action="FrontController">
+           <input type="hidden" name="command" value="DeleteAccountCommand">
+           <input style="background-color: red;" type="submit" value="Delete Account">
         </form>
 
         <form method="post" action="FrontController">

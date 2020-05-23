@@ -1,87 +1,97 @@
 package ejbs.stateless;
 
-import ejbs.singleton.LogRemote;
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
-import javax.ejb.EJB;
 import javax.ejb.Stateless;
-import javax.naming.InitialContext;
-import javax.naming.NamingException;
 import models.Chat;
 import models.ConsoleColors;
-import models.LogMessage;
 import models.Message;
 
 @Stateless
-public class ChatHandler implements ChatHandlerRemote {
+public class ChatHandler{
+    
+    private Connection getConnection(){
+        try{
+            return DriverManager.getConnection("jdbc:derby://localhost:1527/chat;create=true", "app", "app");
+        }catch(SQLException e){
+            System.err.println(e);
+        }
+        return null;        
+    }
 
     @PostConstruct
-    @Override
     public void init(){
         System.out.println("ChatHandler::init - @PostConstruct Stateless");
     }
     
-    @Override
     public boolean existsChat(String nameChat) {
+        nameChat = nameChat.toUpperCase();
         System.out.println("ChatHandler::existsChat::'" + nameChat + "' - @Override Stateless");
         
-        /*try(Connection connection = new Database().getConnection()){
+        try(Connection connection = getConnection()){
             return connection.getMetaData().getTables(null, null, nameChat, null).next();
         }catch(SQLException e){
              System.out.println(ConsoleColors.RED + e.getMessage());
         }
-        */
+        
         return false;
     }
     
-    @Override
-    public boolean createChat(String nameChat) {
+    public boolean createChat(String nameChat) throws ClassNotFoundException, SQLException {
         System.out.println("ChatHandler::createChat::'" + nameChat + "' - @Override Stateless");
         
-        /*String sql = "CREATE TABLE " + nameChat + " (id int(11) NOT NULL AUTO_INCREMENT, name VARCHAR(25) NOT NULL, message VARCHAR(1000) NOT NULL, created_at TIMESTAMP NOT NULL, PRIMARY KEY (id))";
-        try(PreparedStatement pst = new Database().getConnection().prepareStatement(sql)){
+        String sql = ""
+                + "CREATE TABLE " + nameChat + " (" 
+                + "Id INT NOT NULL GENERATED ALWAYS AS IDENTITY,"
+                + "name VARCHAR(255) NOT NULL,"
+                + "message VARCHAR(255) NOT NULL,"
+                + "created_at TIMESTAMP NOT NULL,"
+                + "PRIMARY KEY (Id)"
+                + ")";
+        
+        try(PreparedStatement pst = getConnection().prepareStatement(sql)){
             pst.executeUpdate();
             return true;
         }catch(SQLException e){
              System.out.println(ConsoleColors.RED + e.getMessage());
         }
-        */
-        return false;
+        
+        return true;
     }
     
-    @Override
+    
     public Chat loadChat(String nameChat){
         System.out.println("ChatHandler::loadChat::'" + nameChat + "' - @Override Stateless");
+
+        String sql = "SELECT id, name, message, created_at FROM " + nameChat + " ORDER BY created_at DESC";
         
+        ArrayList<Message> messages = new ArrayList<>();
         
-        /*String sql = "SELECT id, name, message, DATE_FORMAT(created_at, 'at %h:%i:%s %p') as date FROM " + nameChat + " ORDER BY created_at DESC LIMIT 100";
-        ArrayList<Message> messages = new ArrayList<Message>();
-        
-        try(PreparedStatement pst = new Database().getConnection().prepareStatement(sql); ResultSet rs = pst.executeQuery()){
+        try(PreparedStatement pst = getConnection().prepareStatement(sql); ResultSet rs = pst.executeQuery()){
             while(rs.next()){
-                messages.add(new Message(rs.getString("id"), rs.getString("name"), rs.getString("message"), rs.getString("date")));
+                messages.add(new Message(rs.getString("id"), rs.getString("name"), rs.getString("message"), rs.getTime("created_at").toString()));
+                System.out.println("ChatHandler::message::'" + rs.getString("id") + rs.getString("name") + rs.getString("message") + rs.getTime("created_at").toString());
             }
         }catch(SQLException e){
-             System.out.println(ConsoleColors.RED + e.getMessage());
+            System.out.println(ConsoleColors.RED + e.getMessage());
         }
-        */
-        return null;
+        
+        return new Chat(nameChat, messages);
     }
     
-    @Override
     public boolean sendMessageTo(String nameChat, Message message){
         System.out.println("ChatHandler::sendMessageTo::'" + nameChat + "' by "+ message.getUser() + " content " + message.getContent() + " at " + message.getCreated_at() + " - @Override Stateless");
-        /*String sql = "INSERT INTO " + nameChat + " (name, message, created_at) VALUES(?,?,?)";
         
+        String sql = "INSERT INTO " + nameChat + " (name, message, created_at) VALUES(?,?,?)";
         
-        try(PreparedStatement pst = new Database().getConnection().prepareStatement(sql)){
+        try(PreparedStatement pst = getConnection().prepareStatement(sql)){
             pst.setString(1, message.getUser());
             pst.setString(2, message.getContent());
             pst.setString(3, message.getCreated_at());
@@ -89,44 +99,31 @@ public class ChatHandler implements ChatHandlerRemote {
         }catch(SQLException e){
              System.out.println(ConsoleColors.RED + e.getMessage());
         }
-        */
+        
         return false;
     }
     
-    @Override
     public boolean exitsMessage(Message message, Chat chat){
-         System.out.println("ChatHandler::exitsMessage::'" + chat.getName() + "' - @Override Stateless");
-         
-         /*Chat chatDatabase = loadChat(chat.getName());
-         
-         for(Message i : chatDatabase.getMessages()){
-             if(i == message){
-                 return true;
-             }
-         }*/
-        return false;
+        System.out.println("ChatHandler::exitsMessage::'" + chat.getName() + "' - @Override Stateless");         
+        return loadChat(chat.getName()).getMessages().stream().anyMatch((i) -> (i == message));
     }
     
-    @Override
     public boolean deleteMessage(Message message, Chat chat){
         System.out.println("ChatHandler::deleteMessage::message:: '" + message.getContent() + "' - @Override Stateless");
         
-        /*String sql = "DELETE FROM " + chat.getName() + " WHERE id = ?";
+        String sql = "DELETE FROM " + chat.getName() + " WHERE id = ?";
         
-        try(PreparedStatement pst = new Database().getConnection().prepareStatement(sql)){
+        try(PreparedStatement pst = getConnection().prepareStatement(sql)){
             pst.setString(1, message.getId());
             return pst.executeUpdate() == 1;
         }catch(SQLException e){
              System.out.println(ConsoleColors.RED + e.getMessage());
         }
-        */
         return false;
     }
     
     @PreDestroy
-    @Override
     public void destroy() {
-        
         System.out.println("ChatHandler::destroy - @PreDestroy Stateless");
     }
 }

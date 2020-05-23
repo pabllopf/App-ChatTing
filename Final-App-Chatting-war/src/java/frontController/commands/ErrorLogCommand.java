@@ -5,9 +5,6 @@ import models.Error;
 import models.LogMessage;
 
 public class ErrorLogCommand extends AbstractCommand{
-    @EJB
-    private LogRemote logRemote;
-    
     @Override
     public void process() {
         logRemote.add(new LogMessage("ErrorLogCommand::process"));

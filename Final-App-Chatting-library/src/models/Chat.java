@@ -12,7 +12,7 @@ public class Chat {
     
     public Chat() {
         name = "";
-        messages = new ArrayList<Message>();
+        messages = new ArrayList<>();
     }
 
     public String getName() {

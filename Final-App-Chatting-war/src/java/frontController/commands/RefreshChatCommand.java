@@ -11,10 +11,11 @@ public class RefreshChatCommand extends AbstractCommand{
         
         Chat currentChat = (Chat)request.getSession().getAttribute("currentChat");
         if(currentChat == null){
-            currentChat = new ChatHandler().loadChat("publicroom");
+            currentChat = new ChatHandler().loadChat("PUBLICROOM");
         }else{
             currentChat = new ChatHandler().loadChat(currentChat.getName());
         }
+        
         request.getSession().setAttribute("currentChat", currentChat);
         forward("/Chat.jsp");
     } 

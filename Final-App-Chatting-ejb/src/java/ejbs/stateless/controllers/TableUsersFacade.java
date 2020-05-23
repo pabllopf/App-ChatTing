@@ -40,6 +40,16 @@ public class TableUsersFacade extends AbstractFacade<TableUsers> {
     public boolean exists(User account){
         return this.findAll().stream().anyMatch((user) -> (user.getName().equals(account.getUser()) && user.getPassword().equals(account.getPassword())));
     }
+    
+    public void changePassword(User account){
+        TableUsers userToEdit = new TableUsers(this.findAll().stream().filter(i-> i.getName().equals(account.getUser())).findFirst().get().getId(),account.getUser(),account.getPassword());
+        this.edit(userToEdit);
+    }
+    
+    public void removeThisUser(User account){
+        TableUsers userToDelete = new TableUsers(this.findAll().stream().filter(i-> i.getName().equals(account.getUser())).findFirst().get().getId(),account.getUser(),account.getPassword());
+        this.remove(userToDelete);
+    }
 
     @PreDestroy
     public void destroy() {

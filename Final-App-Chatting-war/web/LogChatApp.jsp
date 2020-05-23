@@ -34,8 +34,9 @@
                         <input type="submit" value="Come Back">
                     </form>
                     <h1>Logs(From oldest to newest)</h1>
+                    
                     <%
-                        LogRemote logRemote = (LogRemote)InitialContext.doLookup("java:global/App-Chatting-Enterprise/App-Chatting-Enterprise-ejb/Log");
+                        LogRemote logRemote = (LogRemote)InitialContext.doLookup("java:global/Final-App-Chatting/Final-App-Chatting-ejb/Log!ejbs.singleton.LogRemote");
                         
                         for(LogMessage log : logRemote.getAllLogs()){
                             out.println("<h3>" + log.getLog() + "</h3>");

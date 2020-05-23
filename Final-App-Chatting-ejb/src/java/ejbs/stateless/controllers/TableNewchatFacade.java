@@ -7,6 +7,7 @@ package ejbs.stateless.controllers;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
+import javax.persistence.EntityTransaction;
 import javax.persistence.PersistenceContext;
 import tables.TableNewchat;
 
@@ -24,7 +25,7 @@ public class TableNewchatFacade extends AbstractFacade<TableNewchat> {
     protected EntityManager getEntityManager() {
         return em;
     }
-
+    
     public TableNewchatFacade() {
         super(TableNewchat.class);
     }

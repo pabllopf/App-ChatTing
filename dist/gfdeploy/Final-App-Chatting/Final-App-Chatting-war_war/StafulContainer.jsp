@@ -40,9 +40,9 @@
                     </form>
                     <h1>Staful Container</h1>
                     <%
-                        StafulContainerRemote container = (StafulContainerRemote) InitialContext.doLookup("java:global/App-Chatting-Enterprise/App-Chatting-Enterprise-ejb/StafulContainer");
-                        
-                        Iterator it = container.getAll().entrySet().iterator();
+                        StafulContainerRemote container = (StafulContainerRemote) InitialContext.doLookup("java:global/Final-App-Chatting/Final-App-Chatting-ejb/StafulContainer!ejbs.singleton.StafulContainerRemote");
+                        if(container != null){
+                            Iterator it = container.getAll().entrySet().iterator();
                         while (it.hasNext()) {
                             Map.Entry e = (Map.Entry)it.next();
                             
@@ -54,22 +54,35 @@
                             if(e.getKey().equals("messagePack")){
                                 MessagePackRemote messagePack = (MessagePackRemote) request.getSession().getAttribute("messagePack");
                                 out.println("<h4>Content: </h4>");
-                                
-                                for(Message message : messagePack.getMessages()){
-                                    out.println("<h5>Message Selected To Delete: '"+ message.getContent() + "' by " + message.getUser() + " sended at " + message.getCreated_at() + "</h5>");
+                                if(messagePack != null){
+                                    for(Message message : messagePack.getMessages()){
+                                        out.println("<h5>Message Selected To Delete: '"+ message.getContent() + "' by " + message.getUser() + " sended at " + message.getCreated_at() + "</h5>");
+                                    }
+                                }else{
+                                    out.println("<h5>MessagePackRemote NOT INIT </h5>");
                                 }
+                                
                             }
                             
                             out.println("<br>");
                             
                             if(e.getKey().equals("chatPackRemote")){
                                 ChatPackRemote chatPack = (ChatPackRemote) request.getSession().getAttribute("chatPackRemote");
-                                
-                                for(Chat chat : chatPack.getAll()){
-                                    out.println("<h5>Chat Visited by me: "+ chat.getName() + " </h5>");
+                                if(chatPack !=null){
+                                    for(Chat chat : chatPack.getAll()){
+                                        out.println("<h5>Chat Visited by me: "+ chat.getName() + " </h5>");
+                                    }
+                                }else{
+                                    out.println("<h5>ChatPackRemote NOT INIT </h5>");
                                 }
+                                
+                                
                             }
                         }
+                        
+                        }
+                        
+                        
                     %>
                 </div>
             </main>

@@ -21,7 +21,7 @@ public class MessageToDeleteCommand extends AbstractCommand{
         
         if(packToDelete == null){
             try {
-                packToDelete = (MessagePackRemote) InitialContext.doLookup("java:global/App-Chatting-Enterprise/App-Chatting-Enterprise-ejb/MessagePack");
+                packToDelete = (MessagePackRemote) InitialContext.doLookup("java:global/Final-App-Chatting/Final-App-Chatting-ejb/MessagePack!ejbs.stateful.MessagePackRemote");
                 request.getSession().setAttribute("messagePack", packToDelete);
             } catch (NamingException ex) {
                 Logger.getLogger(MessageToDeleteCommand.class.getName()).log(Level.SEVERE, null, ex);
