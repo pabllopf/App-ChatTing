@@ -7,8 +7,6 @@
         request.getSession().setAttribute("ErrorPage", new Error().saveError("Error: please Login or Sign Up first."));
         response.sendRedirect("ErrorPage.jsp");
     }
-    
-    response.setIntHeader("Refresh", 15);
 %>
 <!DOCTYPE html>
 <html>
@@ -36,7 +34,7 @@
                             out.println("</form>");
                         }  
                     %> 
-                    
+
                     <form method="post" action="FrontController">
                         <input type="hidden" name="command" value="SendMessageCommand">
                         <input type="submit" value="Send Message" name="send">

@@ -6,6 +6,7 @@ import ejbs.singleton.LogRemote;
 import ejbs.singleton.StafulContainerRemote;
 import ejbs.singleton.StatisticsRemote;
 import ejbs.stateful.MessagePackRemote;
+import ejbs.stateful.Pagination;
 import ejbs.stateless.ChatHandler;
 import ejbs.stateless.controllers.TableLogFacade;
 import java.io.IOException;
@@ -29,6 +30,9 @@ public abstract class AbstractCommand {
     protected TableUsersFacade userHandler;
     
     @EJB
+    protected Pagination pagination;
+    
+    @EJB
     protected LogRemote logRemote;
     
     @EJB
@@ -49,6 +53,15 @@ public abstract class AbstractCommand {
         this.request = request;
         this.response = response;
         
+        
+        
+        try {
+            pagination = (Pagination)InitialContext.doLookup("java:global/Final-App-Chatting/Final-App-Chatting-ejb/Pagination!ejbs.stateful.Pagination");
+        } catch (NamingException ex) {
+            Logger.getLogger(MessageToDeleteCommand.class.getName()).log(Level.SEVERE, null, ex);
+        }
+                
+                
         try {
             userHandler = (TableUsersFacade)InitialContext.doLookup("java:global/Final-App-Chatting/Final-App-Chatting-ejb/TableUsersFacade!ejbs.stateless.controllers.TableUsersFacade");
         } catch (NamingException ex) {

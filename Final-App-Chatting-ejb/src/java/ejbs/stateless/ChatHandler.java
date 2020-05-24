@@ -86,6 +86,28 @@ public class ChatHandler{
         return new Chat(nameChat, messages);
     }
     
+    public Chat loadChat(String nameChat, int numPage){
+        System.out.println("ChatHandler::loadChat::'" + nameChat + "' - @Override Stateless");
+
+        String sql = "SELECT id, name, message, created_at FROM " + nameChat + " ORDER BY created_at DESC";
+        
+        ArrayList<Message> messages = new ArrayList<>();
+        
+        try(PreparedStatement pst = getConnection().prepareStatement(sql); ResultSet rs = pst.executeQuery()){
+            while(rs.next()){
+                messages.add(new Message(rs.getString("id"), rs.getString("name"), rs.getString("message"), rs.getTime("created_at").toString()));
+                System.out.println("ChatHandler::message::'" + rs.getString("id") + rs.getString("name") + rs.getString("message") + rs.getTime("created_at").toString());
+            }
+        }catch(SQLException e){
+            System.out.println(ConsoleColors.RED + e.getMessage());
+        }
+       
+        return new Chat(nameChat, messages);
+    }
+    
+    
+    
+    
     public boolean sendMessageTo(String nameChat, Message message){
         System.out.println("ChatHandler::sendMessageTo::'" + nameChat + "' by "+ message.getUser() + " content " + message.getContent() + " at " + message.getCreated_at() + " - @Override Stateless");
         

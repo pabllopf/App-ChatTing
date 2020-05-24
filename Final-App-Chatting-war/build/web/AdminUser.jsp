@@ -33,6 +33,10 @@
            <input type="submit" value="Statitics">
         </form>
         
+        <form method="post" action="Users.jsp">
+           <input type="submit" value="See Users List">
+        </form>
+        
         <form method="post" action="Support.jsp">
            <input type="submit" value="Support">
         </form>

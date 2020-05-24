@@ -5,6 +5,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import models.Error;
 import models.LogMessage;
+import models.Page;
 import models.User;
 
 public class LoginCommand extends AbstractCommand{
@@ -16,6 +17,8 @@ public class LoginCommand extends AbstractCommand{
         
         if(userHandler.login(account)){
             request.getSession().setAttribute("currentAccount", account);
+            request.getSession().setAttribute("numPage", new Page(1));
+            
             
             if(userHandler.loadChat(account) != null){
                 request.getSession().setAttribute("currentChat", new ChatHandler().loadChat(userHandler.loadChat(account)));

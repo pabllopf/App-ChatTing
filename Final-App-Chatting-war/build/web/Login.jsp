@@ -6,6 +6,7 @@
         <link rel="icon" href="resources/icon.png">
         <title>Login</title>
     </head>
+    
     <body>
         <div class="container">
            <form method="post" action="FrontController">

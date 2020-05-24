@@ -9,6 +9,7 @@ import javax.annotation.PreDestroy;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
@@ -98,6 +99,27 @@ public class TableUsersFacade extends AbstractFacade<TableUsers> {
         }else{
             return list.get(0);
         }
+    }
+    
+    public List <TableUsers> loadUsers(int page){
+        int pageNumber = page;
+        int pageSize = 10;
+        
+        List<TableUsers> users = em.createQuery("SELECT c FROM TableUsers c ORDER BY c.id ASC")
+                .setFirstResult((pageNumber-1) * pageSize)
+                .setMaxResults(pageSize)
+                .getResultList();
+
+        return users;
+    }
+    
+    public int getLastPageUsers(){
+        Query queryTotal = em.createQuery ("SELECT count(f.id) FROM TableUsers f");
+        long countResult = (long)queryTotal.getSingleResult();
+        int pageSize = 10;
+        int pageNumber = (int) ((countResult / pageSize) + 1);
+        
+        return pageNumber;
     }
 
     @PreDestroy
