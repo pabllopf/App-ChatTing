@@ -14,6 +14,7 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import models.Chat;
 import models.LogMessage;
+import models.User;
 
 public class ConnectWithCommand  extends AbstractCommand{
     @Override
@@ -64,6 +65,8 @@ public class ConnectWithCommand  extends AbstractCommand{
         }
         
         if(chatPack != null){
+            User currentAccount = (User) request.getSession().getAttribute("currentAccount");
+            userHandler.saveChatHistory(currentAccount, nameChatToConnect);
             chatPack.add(currentChat);
         }
         

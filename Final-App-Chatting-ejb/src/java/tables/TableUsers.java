@@ -8,7 +8,10 @@ package tables;
 import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -26,30 +29,42 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "TableUsers.findAll", query = "SELECT t FROM TableUsers t"),
-    @NamedQuery(name = "TableUsers.login", query = "SELECT t FROM TableUsers t WHERE t.name LIKE :custname"),
     @NamedQuery(name = "TableUsers.findById", query = "SELECT t FROM TableUsers t WHERE t.id = :id"),
     @NamedQuery(name = "TableUsers.findByName", query = "SELECT t FROM TableUsers t WHERE t.name = :name"),
-    @NamedQuery(name = "TableUsers.findByPassword", query = "SELECT t FROM TableUsers t WHERE t.password = :password")})
+    @NamedQuery(name = "TableUsers.findByPassword", query = "SELECT t FROM TableUsers t WHERE t.password = :password"),
+    @NamedQuery(name = "TableUsers.findByChat", query = "SELECT t FROM TableUsers t WHERE t.chat = :chat")})
 public class TableUsers implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @NotNull
     @Column(name = "ID")
     private Integer id;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 50)
+    @Size(min = 1, max = 255)
     @Column(name = "NAME")
     private String name;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 50)
+    @Size(min = 1, max = 255)
     @Column(name = "PASSWORD")
     private String password;
+    
+    @Size(max = 255)
+    @Column(name = "CHAT")
+    private String chat;
+    
+    @Embedded 
+    private TableUserChat userChat = new TableUserChat();
 
     public TableUsers() {
+        userChat.setChat(chat);
+    }
+
+    public TableUserChat getUserChat() {
+        return userChat;
     }
 
     public TableUsers(Integer id) {
@@ -84,6 +99,14 @@ public class TableUsers implements Serializable {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getChat() {
+        return chat;
+    }
+
+    public void setChat(String chat) {
+        this.chat = chat;
     }
 
     @Override

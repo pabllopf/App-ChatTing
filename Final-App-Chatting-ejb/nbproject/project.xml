@@ -7,6 +7,7 @@
             <minimum-ant-version>1.6.5</minimum-ant-version>
             <included-library dirs="200">reference.Final-App-Chatting-library.jar</included-library>
             <included-library dirs="200">file.reference.derbyclient-10.14.2.0.jar</included-library>
+            <included-library dirs="200">file.reference.gson-2.8.6.jar</included-library>
             <source-roots>
                 <root id="src.dir" name="Source Packages"/>
             </source-roots>

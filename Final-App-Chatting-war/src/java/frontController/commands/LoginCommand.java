@@ -1,4 +1,5 @@
 package frontController.commands;
+import ejbs.stateless.ChatHandler;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -15,6 +16,11 @@ public class LoginCommand extends AbstractCommand{
         
         if(userHandler.login(account)){
             request.getSession().setAttribute("currentAccount", account);
+            
+            if(userHandler.loadChat(account) != null){
+                request.getSession().setAttribute("currentChat", new ChatHandler().loadChat(userHandler.loadChat(account)));
+            }
+        
             statistics.countNewLoggin();
             logRemote.add(new LogMessage("Logged::name::" + account.getUser()));
             forward("/RefreshChat.jsp");

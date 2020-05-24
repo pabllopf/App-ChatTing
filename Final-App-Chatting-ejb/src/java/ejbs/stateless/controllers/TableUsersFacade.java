@@ -1,5 +1,8 @@
 package ejbs.stateless.controllers;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
@@ -10,6 +13,7 @@ import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
+import models.Chat;
 import models.User;
 import tables.TableUsers;
 
@@ -68,6 +72,32 @@ public class TableUsersFacade extends AbstractFacade<TableUsers> {
     public void removeThisUser(User account){
         TableUsers userToDelete = new TableUsers(this.findAll().stream().filter(i-> i.getName().equals(account.getUser())).findFirst().get().getId(),account.getUser(),account.getPassword());
         this.remove(userToDelete);
+    }
+    
+    public void saveChatHistory(User account, String chat){
+        TableUsers user = new TableUsers(this.findAll().stream().filter(i-> i.getName().equals(account.getUser())).findFirst().get().getId(),account.getUser(),account.getPassword());        
+        
+        List<String> list = new Gson().fromJson(user.getChat(), new TypeToken<List<String>>(){}.getType());
+        list = list == null ? new ArrayList<>() : list;
+        list.add(chat);
+        
+        String jsonToSave = new Gson().toJson(list);
+        user.setChat(jsonToSave);
+        
+        this.edit(user);
+    }
+    
+    public String loadChat(User account){
+        TableUsers user = new TableUsers(this.findAll().stream().filter(i-> i.getName().equals(account.getUser())).findFirst().get().getId(),account.getUser(),account.getPassword());        
+        
+        List<String> list = new Gson().fromJson(user.getChat(), new TypeToken<List<String>>(){}.getType());
+        list = list == null ? new ArrayList<>() : list;
+        
+        if(list.isEmpty()){
+            return null;
+        }else{
+            return list.get(0);
+        }
     }
 
     @PreDestroy

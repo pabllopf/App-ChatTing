@@ -56,6 +56,8 @@ public class TablePublicroom implements Serializable {
     @Column(name = "CREATED_AT")
     @Temporal(TemporalType.TIMESTAMP)
     private Date createdAt;
+    
+    
 
     public TablePublicroom() {
     }
