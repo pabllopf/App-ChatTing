@@ -3,17 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/wwwam/Documents/Repositorios/App-ChatTing/Final-App-Chatting-ejb/src/java/ejbs/stateless/controllers/TableUsersFacade.java</file>
-            <file>file:/C:/Users/wwwam/Documents/Repositorios/App-ChatTing/Final-App-Chatting-ejb/src/java/ejbs/stateful/MessagePack.java</file>
-            <file>file:/C:/Users/wwwam/Documents/Repositorios/App-ChatTing/Final-App-Chatting-ejb/src/java/ejbs/stateless/controllers/TableExamplechatFacade.java</file>
-            <file>file:/C:/Users/wwwam/Documents/Repositorios/App-ChatTing/Final-App-Chatting-ejb/src/java/ejbs/stateless/controllers/AbstractFacade.java</file>
-            <file>file:/C:/Users/wwwam/Documents/Repositorios/App-ChatTing/Final-App-Chatting-ejb/src/java/tables/TableLog.java</file>
-            <file>file:/C:/Users/wwwam/Documents/Repositorios/App-ChatTing/Final-App-Chatting-ejb/src/java/ejbs/stateless/controllers/TableLogFacade.java</file>
-            <file>file:/C:/Users/wwwam/Documents/Repositorios/App-ChatTing/Final-App-Chatting-ejb/src/java/tables/TableUsers.java</file>
-            <file>file:/C:/Users/wwwam/Documents/Repositorios/App-ChatTing/Final-App-Chatting-ejb/src/java/ejbs/stateless/controllers/TablePublicroomFacade.java</file>
-            <file>file:/C:/Users/wwwam/Documents/Repositorios/App-ChatTing/Final-App-Chatting-ejb/src/java/ejbs/stateless/controllers/TableNewchatFacade.java</file>
-            <file>file:/C:/Users/wwwam/Documents/Repositorios/App-ChatTing/Final-App-Chatting-ejb/src/java/ejbs/stateless/ChatHandler.java</file>
-            <file>file:/C:/Users/wwwam/Documents/Repositorios/App-ChatTing/Final-App-Chatting-ejb/src/java/tables/TablePublicroom.java</file>
+            <file>file:/C:/Users/42250209/Documents/Repositorios/App-ChatTing/Final-App-Chatting-ejb/src/java/ejbs/stateless/ChatHandler.java</file>
+            <file>file:/C:/Users/42250209/Documents/Repositorios/App-ChatTing/Final-App-Chatting-ejb/src/java/ejbs/stateless/controllers/TableUsersFacade.java</file>
+            <file>file:/C:/Users/42250209/Documents/Repositorios/App-ChatTing/Final-App-Chatting-ejb/src/conf/persistence.xml</file>
+            <file>file:/C:/Users/42250209/Documents/Repositorios/App-ChatTing/Final-App-Chatting-ejb/src/java/ejbs/stateless/controllers/TableLogFacade.java</file>
         </group>
     </open-files>
 </project-private>

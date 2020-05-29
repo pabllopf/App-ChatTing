@@ -19,7 +19,7 @@ public class ChatHandler{
     
     private Connection getConnection(){
         try{
-            return DriverManager.getConnection("jdbc:derby://localhost:1527/chat;create=true", "app", "app");
+            return DriverManager.getConnection("jdbc:derby://localhost:1527/chat;create=true", "APP", "APP");
         }catch(SQLException e){
             System.err.println(e);
         }

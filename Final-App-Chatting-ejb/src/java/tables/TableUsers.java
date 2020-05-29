@@ -8,7 +8,6 @@ package tables;
 import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
-import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -22,7 +21,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author wwwam
+ * @author 42250209
  */
 @Entity
 @Table(name = "USERS")
@@ -32,7 +31,8 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "TableUsers.findById", query = "SELECT t FROM TableUsers t WHERE t.id = :id"),
     @NamedQuery(name = "TableUsers.findByName", query = "SELECT t FROM TableUsers t WHERE t.name = :name"),
     @NamedQuery(name = "TableUsers.findByPassword", query = "SELECT t FROM TableUsers t WHERE t.password = :password"),
-    @NamedQuery(name = "TableUsers.findByChat", query = "SELECT t FROM TableUsers t WHERE t.chat = :chat")})
+    @NamedQuery(name = "TableUsers.findByChat", query = "SELECT t FROM TableUsers t WHERE t.chat = :chat"),
+    @NamedQuery(name = "TableUsers.findByChatlist", query = "SELECT t FROM TableUsers t WHERE t.chatlist = :chatlist")})
 public class TableUsers implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -51,20 +51,14 @@ public class TableUsers implements Serializable {
     @Size(min = 1, max = 255)
     @Column(name = "PASSWORD")
     private String password;
-    
     @Size(max = 255)
     @Column(name = "CHAT")
     private String chat;
-    
-    @Embedded 
-    private TableUserChat userChat = new TableUserChat();
+    @Size(max = 255)
+    @Column(name = "CHATLIST")
+    private String chatlist;
 
     public TableUsers() {
-        userChat.setChat(chat);
-    }
-
-    public TableUserChat getUserChat() {
-        return userChat;
     }
 
     public TableUsers(Integer id) {
@@ -107,6 +101,14 @@ public class TableUsers implements Serializable {
 
     public void setChat(String chat) {
         this.chat = chat;
+    }
+
+    public String getChatlist() {
+        return chatlist;
+    }
+
+    public void setChatlist(String chatlist) {
+        this.chatlist = chatlist;
     }
 
     @Override

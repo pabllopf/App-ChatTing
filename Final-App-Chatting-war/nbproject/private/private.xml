@@ -3,50 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/wwwam/Documents/Repositorios/App-ChatTing/Final-App-Chatting-war/src/java/frontController/commands/ConfirmDeleteCommand.java</file>
-            <file>file:/C:/Users/wwwam/Documents/Repositorios/App-ChatTing/Final-App-Chatting-war/src/java/frontController/commands/CancelDeleteCommand.java</file>
-            <file>file:/C:/Users/wwwam/Documents/Repositorios/App-ChatTing/Final-App-Chatting-war/web/page/PrintMessages.jsp</file>
-            <file>file:/C:/Users/wwwam/Documents/Repositorios/App-ChatTing/Final-App-Chatting-war/web/RefreshChat.jsp</file>
-            <file>file:/C:/Users/wwwam/Documents/Repositorios/App-ChatTing/Final-App-Chatting-war/web/index.jsp</file>
-            <file>file:/C:/Users/wwwam/Documents/Repositorios/App-ChatTing/Final-App-Chatting-war/src/java/frontController/commands/MessageToDeleteCommand.java</file>
-            <file>file:/C:/Users/wwwam/Documents/Repositorios/App-ChatTing/Final-App-Chatting-war/web/CreateChat.jsp</file>
-            <file>file:/C:/Users/wwwam/Documents/Repositorios/App-ChatTing/Final-App-Chatting-war/web/AdminUser.jsp</file>
-            <file>file:/C:/Users/wwwam/Documents/Repositorios/App-ChatTing/Final-App-Chatting-war/src/java/frontController/commands/CleanHistoryCommand.java</file>
-            <file>file:/C:/Users/wwwam/Documents/Repositorios/App-ChatTing/Final-App-Chatting-war/web/page/PrintMessagesToDelete.jsp</file>
-            <file>file:/C:/Users/wwwam/Documents/Repositorios/App-ChatTing/Final-App-Chatting-war/src/java/frontController/commands/NewChatCommand.java</file>
-            <file>file:/C:/Users/wwwam/Documents/Repositorios/App-ChatTing/Final-App-Chatting-war/src/java/frontController/commands/UnknownCommand.java</file>
-            <file>file:/C:/Users/wwwam/Documents/Repositorios/App-ChatTing/Final-App-Chatting-war/web/Login.jsp</file>
-            <file>file:/C:/Users/wwwam/Documents/Repositorios/App-ChatTing/Final-App-Chatting-war/web/debug/CheckError.jsp</file>
-            <file>file:/C:/Users/wwwam/Documents/Repositorios/App-ChatTing/Final-App-Chatting-war/web/DeleteMessages.jsp</file>
-            <file>file:/C:/Users/wwwam/Documents/Repositorios/App-ChatTing/Final-App-Chatting-war/web/page/NameChat.jsp</file>
-            <file>file:/C:/Users/wwwam/Documents/Repositorios/App-ChatTing/Final-App-Chatting-war/src/java/frontController/commands/SendMessageCommand.java</file>
-            <file>file:/C:/Users/wwwam/Documents/Repositorios/App-ChatTing/Final-App-Chatting-war/src/java/frontController/commands/RefreshChatCommand.java</file>
-            <file>file:/C:/Users/wwwam/Documents/Repositorios/App-ChatTing/Final-App-Chatting-war/src/java/frontController/commands/SignUpCommand.java</file>
-            <file>file:/C:/Users/wwwam/Documents/Repositorios/App-ChatTing/Final-App-Chatting-war/src/java/frontController/commands/ConfigLogCommand.java</file>
-            <file>file:/C:/Users/wwwam/Documents/Repositorios/App-ChatTing/Final-App-Chatting-war/web/LogChatApp.jsp</file>
-            <file>file:/C:/Users/wwwam/Documents/Repositorios/App-ChatTing/Final-App-Chatting-war/web/ChangePassword.jsp</file>
-            <file>file:/C:/Users/wwwam/Documents/Repositorios/App-ChatTing/Final-App-Chatting-war/web/LogTime.jsp</file>
-            <file>file:/C:/Users/wwwam/Documents/Repositorios/App-ChatTing/Final-App-Chatting-war/web/clock/Clock.jsp</file>
-            <file>file:/C:/Users/wwwam/Documents/Repositorios/App-ChatTing/Final-App-Chatting-war/src/java/frontController/commands/ConnectWithCommand.java</file>
-            <file>file:/C:/Users/wwwam/Documents/Repositorios/App-ChatTing/Final-App-Chatting-war/src/java/frontController/commands/ChangePasswordCommand.java</file>
-            <file>file:/C:/Users/wwwam/Documents/Repositorios/App-ChatTing/Final-App-Chatting-war/web/StafulContainer.jsp</file>
-            <file>file:/C:/Users/wwwam/Documents/Repositorios/App-ChatTing/Final-App-Chatting-war/src/java/frontController/commands/LogOutCommand.java</file>
-            <file>file:/C:/Users/wwwam/Documents/Repositorios/App-ChatTing/Final-App-Chatting-war/src/java/frontController/commands/LoginCommand.java</file>
-            <file>file:/C:/Users/wwwam/Documents/Repositorios/App-ChatTing/Final-App-Chatting-war/src/java/frontController/commands/LogTableSaveCommand.java</file>
-            <file>file:/C:/Users/wwwam/Documents/Repositorios/App-ChatTing/Final-App-Chatting-war/web/SignUp.jsp</file>
-            <file>file:/C:/Users/wwwam/Documents/Repositorios/App-ChatTing/Final-App-Chatting-war/web/Stadistics.jsp</file>
-            <file>file:/C:/Users/wwwam/Documents/Repositorios/App-ChatTing/Final-App-Chatting-war/src/java/frontController/FrontController.java</file>
-            <file>file:/C:/Users/wwwam/Documents/Repositorios/App-ChatTing/Final-App-Chatting-war/src/java/frontController/commands/DeleteAccountCommand.java</file>
-            <file>file:/C:/Users/wwwam/Documents/Repositorios/App-ChatTing/Final-App-Chatting-war/web/index.html</file>
-            <file>file:/C:/Users/wwwam/Documents/Repositorios/App-ChatTing/Final-App-Chatting-war/web/Support.jsp</file>
-            <file>file:/C:/Users/wwwam/Documents/Repositorios/App-ChatTing/Final-App-Chatting-war/web/page/AdminButton.jsp</file>
-            <file>file:/C:/Users/wwwam/Documents/Repositorios/App-ChatTing/Final-App-Chatting-war/web/page/NavMenu.jsp</file>
-            <file>file:/C:/Users/wwwam/Documents/Repositorios/App-ChatTing/Final-App-Chatting-war/web/ErrorPage.jsp</file>
-            <file>file:/C:/Users/wwwam/Documents/Repositorios/App-ChatTing/Final-App-Chatting-war/web/OpenChat.jsp</file>
-            <file>file:/C:/Users/wwwam/Documents/Repositorios/App-ChatTing/Final-App-Chatting-war/src/java/frontController/commands/LogTableCleanCommand.java</file>
-            <file>file:/C:/Users/wwwam/Documents/Repositorios/App-ChatTing/Final-App-Chatting-war/src/java/frontController/commands/ErrorLogCommand.java</file>
-            <file>file:/C:/Users/wwwam/Documents/Repositorios/App-ChatTing/Final-App-Chatting-war/src/java/frontController/commands/AbstractCommand.java</file>
-            <file>file:/C:/Users/wwwam/Documents/Repositorios/App-ChatTing/Final-App-Chatting-war/web/Chat.jsp</file>
+            <file>file:/C:/Users/42250209/Documents/Repositorios/App-ChatTing/Final-App-Chatting-war/src/java/frontController/commands/LoginCommand.java</file>
+            <file>file:/C:/Users/42250209/Documents/Repositorios/App-ChatTing/Final-App-Chatting-war/src/java/frontController/commands/MessageToDeleteCommand.java</file>
+            <file>file:/C:/Users/42250209/Documents/Repositorios/App-ChatTing/Final-App-Chatting-war/src/java/frontController/commands/RefreshChatCommand.java</file>
+            <file>file:/C:/Users/42250209/Documents/Repositorios/App-ChatTing/Final-App-Chatting-war/src/java/frontController/FrontController.java</file>
+            <file>file:/C:/Users/42250209/Documents/Repositorios/App-ChatTing/Final-App-Chatting-war/web/page/PrintMessagesToDelete.jsp</file>
+            <file>file:/C:/Users/42250209/Documents/Repositorios/App-ChatTing/Final-App-Chatting-war/src/java/frontController/commands/AbstractCommand.java</file>
+            <file>file:/C:/Users/42250209/Documents/Repositorios/App-ChatTing/Final-App-Chatting-war/web/page/PrintMessages.jsp</file>
         </group>
     </open-files>
 </project-private>

@@ -81,7 +81,7 @@ public abstract class AbstractCommand {
         }
         
         try {
-            statistics = (StatisticsRemote)InitialContext.doLookup("java:global/Final-App-Chatting/Final-App-Chatting-ejb/Statistics");
+            statistics = (StatisticsRemote)InitialContext.doLookup("java:global/Final-App-Chatting/Final-App-Chatting-ejb/Statistics!ejbs.singleton.StatisticsRemote");
         } catch (NamingException ex) {
             Logger.getLogger(MessageToDeleteCommand.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -94,7 +94,7 @@ public abstract class AbstractCommand {
         
         try {
             packToDelete = (MessagePackRemote) InitialContext.doLookup("java:global/Final-App-Chatting/Final-App-Chatting-ejb/MessagePack!ejbs.stateful.MessagePackRemote");
-            stafulContainer.add("messagePack", "java:global/Final-App-Chatting/Final-App-Chatting-ejb/MessagePack");
+            stafulContainer.add("messagePack", "java:global/Final-App-Chatting/Final-App-Chatting-ejb/MessagePack!ejbs.stateful.MessagePackRemote");
         } catch (NamingException ex) {
             Logger.getLogger(MessageToDeleteCommand.class.getName()).log(Level.SEVERE, null, ex);
         }   
